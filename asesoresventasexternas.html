@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike House</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style5.css"> <!-- Asegúrate de que el nombre del archivo CSS sea correcto -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="images/ICONO_NEGRO_256x256_b4339fbf-63b5-475b-88b3-de74296022de_32x.webp">
+    <!-- Agrega la referencia a html2canvas -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <!-- Agrega la referencia a jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+</head>
+    <style>
+        body {
+    .btn-export {
+      background-color: #17202A;
+      color: #EAECEE;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      right: 20px;
+      position: absolute;
+    }
+}
+    </style>
+<style>
+
+body {
+    .btn-atras {
+    background-color: #17202A;
+    color: #EAECEE;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    }
+}
+
+</style>
+
+<body>
+    <div class="search-container">
+        <div class="input-group">
+            <input type="text" id="busqueda" class="form-control" placeholder="Buscar por nombre, correo electrónico, dirección o región">
+            <span class="input-group-addon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+        </div>
+    </div>       
+  
+    <section class="container"> <!-- Agregué la clase "container" al elemento section -->
+        <button class="btn-export" onclick="exportarExcel()">Exportar a Excel</button>
+        <button class="btn-atras" onclick="atras()">Atras</button>
+        <h1>ASESORES VENTAS EXTERNAS<br>ATENCIÓN DISTRIBUIDORES POR ZONAS DEL PAÍS</h1>
+        <div class="tbl-header">
+            <table id="ASESORES VENTAS EXTERNAS" cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>AREA</th>
+                        <th>ZONA QUE ATIENDE </th>
+                        <th>NOMBRE</th>
+                        <th>CELULAR</th>
+                        <th>CORREO ELECTRÓNICO</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+           
+        <section class="container aym">
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>ZONA BOYACA y LLANOS</td>
+                        <td>CARLOS MUNEVAR</td>
+                        <td></td>
+                        <td class="address-cell">
+                            <span>sesorllanosboyaca@bikehouse.co</span>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>ZONA NORTE BOGOTA </td>
+                        <td></td>
+                        <td>310 386 95 95</td>
+                        <td class="address-cell">
+                            <span>asesorbogota1@bikehouse.com.co</span>
+                        </td>
+                    <tr>
+                        <td></td>
+                        <td>ZONA SUR BOGOTA </td>
+                        <td>GUSTAVO MORALES</td>
+                        <td>318 574 59 58 </td>
+                        <td class="address-cell">
+                            <span>cliffbogsur@bikehouse.co</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>ZONA CENTRO 7 DE AGOSTO </td>
+                        <td>FEDERMAN CUERVO </td>
+                        <td>315 411 89 21</td>
+                        <td class="address-cell">
+                            <span>asesorbogota3@bikehouse.com.co</span>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>ZONA CUNDINAMARCA </td>
+                        <td>CARLOS JAVIER SIBAJA PACHECO</td>
+                        <td>315 699 20 35</td>
+                        <td class="address-cell">
+                            <span>asesorbogotazona3@bikehouse.co</span>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>ZONA VALLE DEL CAUCA</td>
+                        <td>GERARDO JARAMILLO GIRALDO </td>
+                        <td>316 449 86 48</td>
+                        <td>asesorcali@bikehouse.com.co</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>ZONA TOLIMA GRANDE </td>
+                        <td>KAREN YATE LOZANO </td>
+                        <td>315 699 83 15</td>
+                        <td>asesortolimazona11@bikehouse.co</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>ZONA EJE CAFETERO</td>
+                        <td>DAVID QUINTERO</td>
+                        <td>316 692 06 61</td>
+                        <td>asesorejecafetero@bikehouse.co</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>ZONA MEDELLIN y ANTIOQUIA </td>
+                        <td>CLAUDIA PATRICIA GARZON</td>
+                        <td>315 411 89 20</td>
+                        <td>ventas@bikehouse.com.co</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>ZONA COSTA SUR y NORTE </td>
+                        <td>FRANCISCO CORRALES </td>
+                        <td>320 708 51 83</td>
+                        <td>institucional@bikehouse.co</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>ZONA SUR </td>
+                        <td></td>
+                        <td>316 876 41 29</td>
+                        <td>asesorzonasur@bikehouse.co</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>ZONA SANTANDERES</td>
+                        <td>CARLOS MARIÑO </td>
+                        <td>321 836 32 02</td>
+                        <td class="address-cell">
+                            <span>asesorzonaoriente@bikehouse.com.co</span>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>ZONA BOGOTA</td>
+                        <td>MARIA FERNANDA FAJARDO</td>
+                        <td>312 469 07 81</td>
+                        <td>asesorbicibogota@bikehouse.co</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+        <script src="script3.js"></script>
+        <script>
+            function exportarExcel() {
+    // Crear un libro de trabajo vacío
+    var wb = XLSX.utils.book_new();
+
+    // Crear una matriz para almacenar todos los datos de todas las tablas
+    var allTableData = [];
+
+    // Obtener todas las tablas con la clase tbl-content
+    var tablas = document.querySelectorAll('.tbl-content table');
+
+    // Recorrer cada tabla
+    tablas.forEach((tabla, index) => {
+        // Crear una matriz para almacenar todos los datos de la tabla actual
+        var tableData = [];
+
+        // Agregar el nombre de la tabla como primera fila
+        tableData.push([tabla.id]);
+
+        // Recorrer cada fila de la tabla
+        Array.from(tabla.rows).forEach(row => {
+            var rowData = [];
+            // Recorrer cada celda de la fila
+            Array.from(row.cells).forEach(cell => {
+                rowData.push(cell.textContent);
+            });
+            tableData.push(rowData);
+        });
+
+        // Agregar una fila en blanco para separar las tablas
+        tableData.push([]);
+
+        // Concatenar los datos de la tabla actual a los datos de todas las tablas
+        allTableData = allTableData.concat(tableData);
+    });
+
+    // Convertir la matriz con todos los datos de las tablas en una hoja de Excel
+    var ws = XLSX.utils.aoa_to_sheet(allTableData);
+
+    // Establecer estilos para la hoja de Excel
+    var range = XLSX.utils.decode_range(ws['!ref']);
+
+    // Establecer estilos para las filas
+    for (var R = range.s.r; R <= range.e.r; ++R) {
+        var row_address = { r: R };
+        var row_ref = XLSX.utils.encode_row(R);
+        ws['!rows'] = ws['!rows'] || [];
+        ws['!rows'][R] = {
+            height: 10, // Altura de la fila en puntos
+            hidden: false, // La fila no está oculta
+            outlineLevel: 0, // Nivel de esquema de la fila
+            collapsed: false // La fila no está colapsada
+        };
+    }
+
+    // Establecer estilos para las columnas
+    for (var C = range.s.c; C <= range.e.c; ++C) {
+        var col_address = { c: C };
+        var col_ref = XLSX.utils.encode_col(C);
+        ws['!cols'] = ws['!cols'] || [];
+        ws['!cols'][C] = {
+            width: 80, // Ancho de la columna en puntos
+            hidden: false, // La columna no está oculta
+            outlineLevel: 0, // Nivel de esquema de la columna
+            collapsed: false // La columna no está colapsada
+        };
+    }
+
+    // Establecer estilos para las celdas
+    for (var R = range.s.r; R <= range.e.r; ++R) {
+        for (var C = range.s.c; C <= range.e.c; ++C) {
+            var cell_address = { c: C, r: R };
+            var cell_ref = XLSX.utils.encode_cell(cell_address);
+            if (!ws[cell_ref]) continue;
+            ws[cell_ref].s = {
+                font: { name: "Arial", bold: true },
+                fill: { patternType: "solid", fgColor: { rgb: "#FFDD99" } },
+                border: { top: { style: "thin", color: { rgb: "#EAECEE" } }, bottom: { style: "thin", color: { rgb: "#797D7F " } }, left: { style: "thin", color: { rgb: "#A04000" } }, right: { style: "thin", color: { rgb: "#F9E79F" } } }
+            };
+        }
+    }
+
+    // Agregar la hoja al libro de trabajo
+    XLSX.utils.book_append_sheet(wb, ws, 'ASESORES DE VENTAS');
+
+    // Guardar el libro de trabajo como archivo Excel
+    XLSX.writeFile(wb, 'asesores_de_ventas.xlsx');
+}
+
+function atras() {
+    window.location.href = 'index.html';
+}
+
+
+            const buscar = () => {
+                const textoBusqueda = document.getElementById("busqueda").value.trim().toLowerCase();
+                const filas = document.querySelectorAll(".tbl-content tbody tr");
+        
+                // Limpiar resultados anteriores
+                filas.forEach((fila) => {
+                    fila.classList.remove("resultado");
+                    const celdas = fila.querySelectorAll("td");
+                    celdas.forEach((celda) => {
+                        celda.style.backgroundColor = "";
+                    });
+                });
+        
+                if (textoBusqueda === "") {
+                    // Ocultar mensaje de no resultados al limpiar
+                    const mensajeNoResultados = document.getElementById("mensajeNoResultados");
+                    mensajeNoResultados.style.display = "none";
+                    return;
+                }
+        
+                const regex = new RegExp(textoBusqueda, "i");
+        
+                const filasEncontradas = Array.from(filas).filter((fila) => {
+                    const celdas = fila.querySelectorAll("td");
+                    return Array.from(celdas).some((celda) => regex.test(celda.textContent.trim()));
+                });
+        
+                if (filasEncontradas.length > 0) {
+                    filasEncontradas.forEach((fila) => {
+                        fila.classList.add("resultado");
+                        fila.scrollIntoView({ behavior: "smooth" });
+        
+                        const celdasEncontradas = fila.querySelectorAll("td");
+                        celdasEncontradas.forEach((celda) => {
+                            celda.style.backgroundColor = "#FF0000"; // Cambia el color a rojo aquí
+                        });
+                    });
+                } else {
+                    // Mostrar mensaje de no resultados
+                    const mensajeNoResultados = document.getElementById("mensajeNoResultados");
+                    mensajeNoResultados.style.display = "block";
+                }
+            };
+        
+            document.getElementById("busqueda").addEventListener("input", buscar);
+        
+            document.querySelector(".icon-right img").addEventListener("click", () => {
+                const finalDeLaPagina = document.querySelector("body");
+                finalDeLaPagina.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+            });
+        </script>        
+    </body>
+    </html>
+
+

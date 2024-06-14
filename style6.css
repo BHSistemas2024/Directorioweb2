@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital@1&family=Bebas+Neue&family=Nunito+Sans:ital,opsz,wght@0,600;1,600&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Condensed:wght@400;700&display=swap');
+:root {
+  background-color: #17202A; /* Color principal */
+  --secondary-color: #17202A(255, 253, 253); /* Color secundario */
+  --table-line-color: var(--main-color); /* Color de línea de tabla */
+  --font-size-base: 1rem; /* Tamaño base */
+  --font-size-large: 2rem; /* Tamaño grande */
+  --font-size-small: 0.75rem; /* Tamaño pequeño */
+  --border-radius: 8px; /* Radio del borde */
+}
+
+body {
+  background-color: #17202A;
+  font-family: var(--fuente-base);
+  line-height: 1.6;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #fff;
+  margin: 0;
+}
+
+.btn-export:hover {
+  background-color: #58D68D;
+}
+
+.btn-atras:hover {
+  background-color: #58D68D;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #17202A; /* Cambia esto al color deseado */
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+  font-size: var(--font-size-large);
+  text-align: center;
+  margin-bottom: 1em;
+  color: #ffffff;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-top: 0em;
+}
+
+.tbl-header {
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+}
+
+.tbl-content {
+  overflow-y: auto;
+  border: 1px solid var(--table-line-color);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+th, td {
+  padding: 10px; /* Ajusté el padding */
+  text-align: center;
+  border-bottom: 1px solid #ffffff; /* Simplifiqué la definición del borde inferior */
+  vertical-align: middle; /* Alineación vertical del texto */
+}
+
+th {
+  font-size: var(--font-size-small);
+  text-transform: uppercase;
+  color: #fff;
+  transition: background-color 0.0s ease-in-out;
+}
+
+th:hover {
+  color: #fff;
+}
+
+.input-group {
+  flex: 1;
+  max-width: 300px;
+  margin-right: 10px;
+  display: flex;
+  border: 2px solid #000;
+  border-radius: 15px;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.input-group:focus-within {
+  border-color: #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-control {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-group-addon {
+  background-color: #000000;
+  color: #fff;
+  border-radius: 0 15px 15px 0;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 1099px) {
+  /* Tamaño de fuente y encabezados */
+  body {
+    font-size: 16px;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+
+  /* Tabla */
+  table {
+    width: 100%;
+    margin-top: 1em;
+  }
+  
+  th, td {
+    display: block;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid transparent;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  td:last-child {
+    border-bottom: 1px solid var(--table-line-color);
+    margin-bottom: 0;
+  }
+
+  /* Formulario */
+  .input-group {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  .form-control, .contact-inputs {
+    width: 100%;
+    padding: 15px;
+    max-width: none;
+  }
+
+  /* Sección de contacto */
+  .contact-right {
+    display: none;
+  }
+  
+  .contact-container, .container, .contact-left {
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    text-align: center;
+  }
+  
+  .contact-container {
+    height: auto;
+  }
+  
+  .contact-left {
+    margin-left: 0;
+  }
+  
+  .contact-right img {
+    width: 100%;
+  }
+  
+  .contact-inputs-group {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  
+  .input-group-addon {
+    border-radius: 15px;
+  }
+}

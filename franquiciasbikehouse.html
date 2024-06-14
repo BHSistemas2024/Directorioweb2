@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike House</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style3.css"> <!-- Asegúrate de que el nombre del archivo CSS sea correcto -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="images/ICONO_NEGRO_256x256_b4339fbf-63b5-475b-88b3-de74296022de_32x.webp">
+    <!-- Agrega la referencia a html2canvas -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <!-- Agrega la referencia a jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+</head>
+
+<body>
+    <div class="search-container">
+        <div class="input-group">
+            <input type="text" id="busqueda" class="form-control" placeholder="Buscar por nombre, correo electrónico, dirección o región">
+            <span class="input-group-addon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+        </div>
+    </div>       
+  
+    <section class="container"> <!-- Agregué la clase "container" al elemento section -->
+        <h1>FRANQUICIAS BIKE HOUSE</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>CIUDAD</th>
+                        <th>NOMBRE DE LA TIENDA</th>
+                        <th>PERSONA CONTACTO FRANQUICIA</th>
+                        <th>CELULAR</th>
+                        <th>CORREO ELECTRÓNICO</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+       
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+        <script src="script3.js"></script>
+        <script>
+            const buscar = () => {
+                const textoBusqueda = document.getElementById("busqueda").value.trim().toLowerCase();
+                const filas = document.querySelectorAll(".tbl-content tbody tr");
+        
+                // Limpiar resultados anteriores
+                filas.forEach((fila) => {
+                    fila.classList.remove("resultado");
+                    const celdas = fila.querySelectorAll("td");
+                    celdas.forEach((celda) => {
+                        celda.style.backgroundColor = "";
+                    });
+                });
+        
+                if (textoBusqueda === "") {
+                    // Ocultar mensaje de no resultados al limpiar
+                    const mensajeNoResultados = document.getElementById("mensajeNoResultados");
+                    mensajeNoResultados.style.display = "none";
+                    return;
+                }
+        
+                const regex = new RegExp(textoBusqueda, "i");
+        
+                const filasEncontradas = Array.from(filas).filter((fila) => {
+                    const celdas = fila.querySelectorAll("td");
+                    return Array.from(celdas).some((celda) => regex.test(celda.textContent.trim()));
+                });
+        
+                if (filasEncontradas.length > 0) {
+                    filasEncontradas.forEach((fila) => {
+                        fila.classList.add("resultado");
+                        fila.scrollIntoView({ behavior: "smooth" });
+        
+                        const celdasEncontradas = fila.querySelectorAll("td");
+                        celdasEncontradas.forEach((celda) => {
+                            celda.style.backgroundColor = "#FF0000"; // Cambia el color a rojo aquí
+                        });
+                    });
+                } else {
+                    // Mostrar mensaje de no resultados
+                    const mensajeNoResultados = document.getElementById("mensajeNoResultados");
+                    mensajeNoResultados.style.display = "block";
+                }
+            };
+        
+            document.getElementById("busqueda").addEventListener("input", buscar);
+        
+            document.querySelector(".icon-right img").addEventListener("click", () => {
+                const finalDeLaPagina = document.querySelector("body");
+                finalDeLaPagina.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+            });
+        </script>        
+    </body>
+    </html>
+
+

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike House</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style2.css"> <!-- Asegúrate de que el nombre del archivo CSS sea correcto -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="images/ICONO_NEGRO_256x256_b4339fbf-63b5-475b-88b3-de74296022de_32x.webp">
+    <!-- Agrega la referencia a html2canvas -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <!-- Agrega la referencia a jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+</head>
+    <style>
+        body {
+      .btn-export {
+      background-color: #17202A;
+      color: #EAECEE;
+      padding: 20px 40px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      right: 20px;
+      position: absolute;
+    }
+  }
+    </style>
+    <style>
+        body {
+        .btn-atras {
+        background-color: #17202A;
+        color: #EAECEE;
+        padding: 20px 40px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+     }
+  }
+    </style>
+
+<body>
+    <div class="search-container">
+        <div class="input-group">
+            <input type="text" id="busqueda" class="form-control" placeholder="Buscar por nombre, correo electrónico, dirección o región">
+            <span class="input-group-addon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+        </div>
+    </div> 
+
+        <section class="container">
+            <button class="btn-export" onclick="exportarExcel()">Exportar a Excel</button>
+            <button class="btn-atras" onclick="atras()">Atras</button>
+            <h1>TIENDAS CLIFF</h1>
+            <div class="tbl-header">
+                <table id="TIENDAS CLIFF" cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                        <tr>
+                            <th>REGIÓN</th>
+                            <th>NOMBRE TIENDA</th>
+                            <th>ADMINISTRADOR</th>
+                            <th>CELULAR</th>
+                            <th>CORREO ELECTRÓNICO</th>
+                            <th>DIRECCIÓN</th>
+                            <th>PROVEEDOR DE INTERNET</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            
+            <section class="container aym">
+                <div class="tbl-content">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                    <tr>
+                        <td>CLIFF ANTIOQUIA</td>
+                        <td>CLIFF SAN DIEGO</td>
+                        <td>FABIAN MUÑOZ</td>
+                        <td>3165382452</td>
+                        <td class="email-cell">
+                            <span>tiendacliff@</span>
+                            <span style="display: block;">bikehouse.co</span>
+                        <td>CARRERA 43 # 30 - 103, MEDELLÍN, ANTIOQUIA, COLOMBIA</td>
+                        <td>CUENTA CON SERVICIO DE TALLER</td>
+                    </tr>
+                    <tr>
+                        <td>CLIFF ANTIOQUIA</td>
+                        <td>CLIFF ENVIGADO</td>
+                        <td>ANGEL MAURICIO BUITRAGO</td>
+                        <td>3184811117</td>
+                        <td class="email-cell">
+                            <span>tiendacliffenvigado@</span>
+                            <span style="display: block;">bikehouse.co</span>
+                        <td>CALLE 37 SUR #36-31, ENVIGADO, ANTIOQUIA, COLOMBIA</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>CLIFF CUNDINAMARCA</td>
+                        <td>CLIFF 7 DE AGOSTO</td>
+                        <td>JHON PINZON</td>
+                        <td>3168753232</td>
+                        <td class="email-cell">
+                            <span>cliffbogcentro@</span>
+                            <span style="display: block;">bikehouse.co</span>
+                        <td>CARRERA 28 A #68-28 SECTOR 7 DE AGOSTO, BOGOTÁ, CUNDINAMARCA, COLOMBIA</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>CLIFF EJE CAFETERO</td>
+                        <td>CLIFF ARMENIA</td>
+                        <td>FELIPE MONTOYA</td>
+                        <td>3175506926</td>
+                        <td class="email-cell">
+                            <span>tiendacliffarmenia@</span>
+                            <span style="display: block;">bikehouse.co</span>
+                        <td>AVENIDA BOLIVAR #10 NORTE-12 LOCAL 1, ARMENIA, EJE CAFETERO, COLOMBIA</td>
+                        <td>CUENTA CON SERVICIO DE TALLER</td>
+                    </tr>
+                    <tr>
+                        <td>CLIFF CUNDINAMARCA</td>
+                        <td>CLIFF CAJICA</td>
+                        <td>LEONARDO FISCO RODRIGUEZ </td>
+                        <td>3173514252</td>
+                        <td class="email-cell">
+                            <span>cliffcajica@</span>
+                            <span style="display: block;">bikehouse.co</span>
+                        <td>Carrera 5 #4A-79, Local 1-103, Conjunto Mixto Pietra PH, Cajicá, Cundinamarca, Colombia</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+        <script src="script3.js"></script>
+        <script>
+            function exportarExcel() {
+    // Crear un libro de trabajo vacío
+    var wb = XLSX.utils.book_new();
+
+    // Crear una matriz para almacenar todos los datos de todas las tablas
+    var allTableData = [];
+
+    // Obtener todas las tablas con la clase tbl-content
+    var tablas = document.querySelectorAll('.tbl-content table');
+
+    // Recorrer cada tabla
+    tablas.forEach((tabla, index) => {
+        // Crear una matriz para almacenar todos los datos de la tabla actual
+        var tableData = [];
+
+        // Agregar el nombre de la tabla como primera fila
+        tableData.push([tabla.id]);
+
+        // Recorrer cada fila de la tabla
+        Array.from(tabla.rows).forEach(row => {
+            var rowData = [];
+            // Recorrer cada celda de la fila
+            Array.from(row.cells).forEach(cell => {
+                rowData.push(cell.textContent);
+            });
+            tableData.push(rowData);
+        });
+
+        // Agregar una fila en blanco para separar las tablas
+        tableData.push([]);
+
+        // Concatenar los datos de la tabla actual a los datos de todas las tablas
+        allTableData = allTableData.concat(tableData);
+    });
+
+    // Convertir la matriz con todos los datos de las tablas en una hoja de Excel
+    var ws = XLSX.utils.aoa_to_sheet(allTableData);
+
+    // Establecer estilos para la hoja de Excel
+    var range = XLSX.utils.decode_range(ws['!ref']);
+
+    // Establecer estilos para las filas
+    for (var R = range.s.r; R <= range.e.r; ++R) {
+        var row_address = { r: R };
+        var row_ref = XLSX.utils.encode_row(R);
+        ws['!rows'] = ws['!rows'] || [];
+        ws['!rows'][R] = {
+            height: 10, // Altura de la fila en puntos
+            hidden: false, // La fila no está oculta
+            outlineLevel: 0, // Nivel de esquema de la fila
+            collapsed: false // La fila no está colapsada
+        };
+    }
+
+    // Establecer estilos para las columnas
+    for (var C = range.s.c; C <= range.e.c; ++C) {
+        var col_address = { c: C };
+        var col_ref = XLSX.utils.encode_col(C);
+        ws['!cols'] = ws['!cols'] || [];
+        ws['!cols'][C] = {
+            width: 80, // Ancho de la columna en puntos
+            hidden: false, // La columna no está oculta
+            outlineLevel: 0, // Nivel de esquema de la columna
+            collapsed: false // La columna no está colapsada
+        };
+    }
+
+    // Establecer estilos para las celdas
+    for (var R = range.s.r; R <= range.e.r; ++R) {
+        for (var C = range.s.c; C <= range.e.c; ++C) {
+            var cell_address = { c: C, r: R };
+            var cell_ref = XLSX.utils.encode_cell(cell_address);
+            if (!ws[cell_ref]) continue;
+            ws[cell_ref].s = {
+                font: { name: "Arial", bold: true },
+                fill: { patternType: "solid", fgColor: { rgb: "#FFDD99" } },
+                border: { top: { style: "thin", color: { rgb: "#EAECEE" } }, bottom: { style: "thin", color: { rgb: "#797D7F " } }, left: { style: "thin", color: { rgb: "#A04000" } }, right: { style: "thin", color: { rgb: "#F9E79F" } } }
+            };
+        }
+    }
+
+    // Agregar la hoja al libro de trabajo
+    XLSX.utils.book_append_sheet(wb, ws, 'TIENDAS CLIFF');
+
+    // Guardar el libro de trabajo como archivo Excel
+    XLSX.writeFile(wb, 'tiendas_cliff.xlsx');
+}
+function atras() {
+    window.location.href = 'index.html';
+}
+            const buscar = () => {
+                const textoBusqueda = document.getElementById("busqueda").value.trim().toLowerCase();
+                const filas = document.querySelectorAll(".tbl-content tbody tr");
+        
+                // Limpiar resultados anteriores
+                filas.forEach((fila) => {
+                    fila.classList.remove("resultado");
+                    const celdas = fila.querySelectorAll("td");
+                    celdas.forEach((celda) => {
+                        celda.style.backgroundColor = "";
+                    });
+                });
+        
+                if (textoBusqueda === "") {
+                    // Ocultar mensaje de no resultados al limpiar
+                    const mensajeNoResultados = document.getElementById("mensajeNoResultados");
+                    mensajeNoResultados.style.display = "none";
+                    return;
+                }
+        
+                const regex = new RegExp(textoBusqueda, "i");
+        
+                const filasEncontradas = Array.from(filas).filter((fila) => {
+                    const celdas = fila.querySelectorAll("td");
+                    return Array.from(celdas).some((celda) => regex.test(celda.textContent.trim()));
+                });
+        
+                if (filasEncontradas.length > 0) {
+                    filasEncontradas.forEach((fila) => {
+                        fila.classList.add("resultado");
+                        fila.scrollIntoView({ behavior: "smooth" });
+        
+                        const celdasEncontradas = fila.querySelectorAll("td");
+                        celdasEncontradas.forEach((celda) => {
+                            celda.style.backgroundColor = "#FF0000"; // Cambia el color a rojo aquí
+                        });
+                    });
+                } else {
+                    // Mostrar mensaje de no resultados
+                    const mensajeNoResultados = document.getElementById("mensajeNoResultados");
+                    mensajeNoResultados.style.display = "block";
+                }
+            };
+        
+            document.getElementById("busqueda").addEventListener("input", buscar);
+        
+            document.querySelector(".icon-right img").addEventListener("click", () => {
+                const finalDeLaPagina = document.querySelector("body");
+                finalDeLaPagina.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+            });
+        </script>        
+    </body>
+    </html>

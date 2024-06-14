@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike House</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style6.css"> <!-- Asegúrate de que el nombre del archivo CSS sea correcto -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="images/ICONO_NEGRO_256x256_b4339fbf-63b5-475b-88b3-de74296022de_32x.webp">
+    <!-- Agrega la referencia a html2canvas -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <!-- Agrega la referencia a jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+</head>
+
+    <style>
+        body {
+      .btn-export {
+      background-color: #17202A;
+      color: #EAECEE;
+      padding: 20px 40px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      right: 20px;
+      position: absolute;
+    }
+  }
+    </style>
+
+    <style>
+      body {
+        .btn-atras {
+        background-color: #17202A;
+        color: #EAECEE;
+        padding: 20px 40px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+    </style>
+
+<body>
+    <div class="search-container">
+        <div class="input-group">
+            <input type="text" id="busqueda" class="form-control" placeholder="Buscar por nombre, correo electrónico, dirección o región">
+            <span class="input-group-addon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+        </div>
+    </div>    
+<section class="container">
+  <button class="btn-export" onclick="exportarExcel()">Exportar a Excel</button>
+  <button class="btn-atras" onclick="atras()">Atras</button>
+  <h1>AREA  ADMINISTRATIVA</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>PERSONAL</th>
+          <th>CELULAR - EXTENSIÓN</th>
+          <th>CARGO - CENTRO DE COSTOS</th>
+          <th>CORREO</th>
+          <th>UBICACIÓN</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+<section class="container aym">
+  <h1>SISTEMAS</h1>
+  <div class="tbl-content">
+    <table id="SISTEMAS" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>JUAN DAVID OCHOA ARANGO</td>
+          <td>317 805 14 00</td>
+          <td>LÍDER DE SISTEMAS</td>
+          <td>sistemas@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>YORDIS ANDRES MESTRA MENDEZ</td>
+          <td>317 805 14 00</td>
+          <td>PRACTICANTE SISTEMAS</td>
+          <td>practicante2.sistemas@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+ 
+
+<section class="container aym">
+  <h1>IMPORTACIONES</h1>
+  <div class="tbl-content">
+    <table id="IMPORTACIONES" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>DIEGO ALFONSO LUNA DURANGO</td>
+          <td>321 836 3178</td>
+          <td>LÍDER DE IMPORTACIONES</td>
+          <td>importaciones@bikehouse.com.co</td>
+          <td>DREAM</td>
+        </tr>
+          <tr>
+          <td>MARIA CRISTINA JARAMILLO HOLGIN</td>
+          <td>321 836 3178</td>
+          <td>PRACTICANTE INPORTACIONES</td>
+          <td>practicante.inportaciones@bikehouse.co</td>
+          <td>DREAM</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+      
+<section class="container aym">
+  <h1>CATEGORY MANAGER</h1>
+  <div class="tbl-content">
+    <table id="CATEGORY MANAGER" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>DAVID BALLESTEROS</td>
+          <td>3154679644</td>
+          <td>CATEGORY BIKE</td>
+          <td>gerentedeventas@bikehouse.com.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>CARLOS DAVID OSORIO GONZÁLEZ</td>
+          <td>312 330 15 67</td>
+          <td>CATEGORY ON BIKE</td>
+          <td>ib5@bikehouse.com.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+      
+<section class="container aym">
+  <h1>E-COMMERCE</h1>
+  <div class="tbl-content">
+    <table id="E-COMMERCE" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>LUISA FERNANANDA CADAVID MONTOYA</td>
+          <td>3102046079</td>
+          <td>ECOMMERCE</td>
+          <td>liderecommerce@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>NICOLÁS GUTIÉRREZ</td>
+          <td>3103899595</td>
+          <td>AUXILIAR ONLINE</td>
+          <td>auxiliar.online@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<section class="container aym">
+  <h1>MERCADEO</h1>
+  <div class="tbl-content">
+    <table id="MERCADEO" cellpadding="0" cellspacing="0" border="0">
+      <tbody> 
+        <tr>
+          <td>DANIEL CUJAR VILLEGAS</td>
+          <td>314 399 40 77</td>
+          <td>COORDINADOR MARKETING</td>
+          <td>coordinadormarketing@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>NELSON SÁNCHEZ</td>
+          <td>314 399 40 77</td>
+          <td>LÍDER DE DISEÑO</td>
+          <td>disenador2@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>DANIELA PÉREZ</td>
+          <td></td>
+          <td>COMMUNITY MANAGER</td>
+          <td>communitymanager@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>CRISTIAN CAMILO LUJÁN</td>
+          <td></td>
+          <td>AUDIOVISUAL</td>
+          <td>disenador4@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>EMMANUEL JIMÉNEZ CASTRO</td>
+          <td></td>
+          <td>DISEÑADOR GRÁFICO</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>SARA ATEHORTUA FERNANDES</td>
+          <td></td>
+          <td>DISEÑADORA CLIFF</td>
+          <td>diseñadorcliff@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>CAMILA BALLESTERO</td>
+          <td></td>
+          <td>COMMUNITY MANAGER</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<section class="container aym">
+  <h1>GESTIÓN HUMANA</h1>
+  <div class="tbl-content">
+    <table id="GESTIÓN HUMANA" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>JULIETA MONCADA</td>
+          <td>316 744 32 60 Ext. 4253</td>
+          <td>ASISTENTE GESTIÓN HUMANA</td>
+          <td>rhumanos@bikehouse.com.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>KAROLL GRISALES</td>
+          <td>316 744 32 60 Ext. 4254</td>
+          <td>ASISTENTE, CONTRATACIÓN Y BIENESTAR</td>
+          <td>auxgestionhumana@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>MARIANA MENA</td>
+          <td>316 744 3260</td>
+          <td>APRENDIZ DE PSICOLOGÍA Y GESTIÓN HUMANA</td>
+          <td>practicantegh@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr> 
+        <tr>
+          <td>LAURA VANESSA GRACIANO VELEZ</td>
+          <td></td>
+          <td>PRACTICANTE GESTION HUMANA</td>
+          <td>practicante.gestionhumana@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>SEGURIDAD Y SALUD EN EL TRABAJO</h1>
+  <div class="tbl-content">
+    <table id="SEGURIDAD Y SALUD EN EL TRABAJO" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>BEATRIZ CAMARGO</td>
+          <td></td>
+          <td>APRENDIZ SST</td>
+          <td>auxiliarsst@bikehouse.co</td>
+          <td>OBRA</td>
+        </tr>
+        <tr>
+          <td>PAULINA JURADO</td>
+          <td>310 838 5784</td>
+          <td>LÍDER SEGURIDAD Y SALUD EN EL TRABAJO</td>
+          <td>seguridadysalud@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>LÍDERES DE ZONA</h1>
+  <div class="tbl-content">
+    <table id="LÍDERES DE ZONA" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>ANDRÉS MONTENEGRO</td>
+          <td>315 350 06 23</td>
+          <td>LÍDER DE ZONA BOGOTÁ, HUILA Y BOYACÁ</td>
+          <td>coordinadorzonacentro@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>GUSTAVO MARTÍNEZ</td>
+          <td></td>
+          <td>LÍDER ANTIOQUIA</td>
+          <td>directordetiendas@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>DARIO VILLEGAS</td>
+          <td>314 8659640</td>
+          <td>LÍDER ZONA SUR</td>
+          <td>coordinadortiendas@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>JUAN CARLOS CASTELLANOS</td>
+          <td>3102539092</td>
+          <td>LÍDER ZONA NORTE</td>
+          <td>coordinadorzonanorte@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>SERVICIO AL CLIENTE Y GARANTÍAS</h1>
+  <div class="tbl-content">
+    <table id="SERVICIO AL CLIENTE Y GARANTÍAS" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>SANDRA BURITICA</td>
+          <td>318 330 66 54 Ext. 4170</td>
+          <td>LÍDER SERVICIO CLIENTE Y GARANTÍAS</td>
+          <td>servicioalcliente@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>JUAN FERNANDO PUERTA</td>
+          <td>318 595 81 02 Ext. 4171</td>
+          <td>AUXILIAR GARANTÍAS FITNESS</td>
+          <td>garantias@bikehouse.com.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>CAMILA GALE</td>
+          <td>318 595 81 02</td>
+          <td>AUXILIAR DE GARANTÍAS</td>
+          <td>atencionalcliente@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>JUAN ESTEBAN MARIN</td>
+          <td>318 330 66 54 Ext. 4172</td>
+          <td>AUXILIAR GARANTÍAS</td>
+          <td>garantiasaccesorios@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>318 330 66 54</td>
+          <td>AUXILIAR DE GARANTÍAS</td>
+          <td>auxgarantias@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>PLANIFICACIÓN DE INVENTARIOS</h1>
+  <div class="tbl-content">
+    <table id="PLANIFICACIÓN DE INVENTARIOS" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>DAVID ANDRÉS VALENCIA MARÍN</td>
+          <td>310 387 15 02</td>
+          <td>PLANIFICACIÓN DE INVENTARIOS ON BIKE</td>
+          <td>planificaciononbike@bikehouse.co</td>
+          <td>BODEGA</td>
+        </tr>
+        <tr>
+          <td>JULIÁN LÓPEZ PATIÑO</td>
+          <td>310 387 15 02</td>
+          <td>PLANIFICACIÓN DE INVENTARIOS</td>
+          <td>planificaciondeinventarios@bikehouse.com.co</td>
+          <td>BODEGA</td>
+        </tr>
+        <tr>
+          <td>DARIO VILLEGAS</td>
+          <td>3148659640</td>
+          <td>PLANIFICACIÓN BICICLETAS</td>
+          <td>planificaciondeinventarios2@bikehouse.com.co</td>
+          <td>BODEGA</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>INVENTARIOS</h1>
+  <div class="tbl-content">
+    <table id="INVENTARIOS" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>ANDREA AYALA</td>
+          <td>311 200 77 01</td>
+          <td>COORDINADORA DE INVENTARIOS</td>
+          <td>inventario2@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>311 200 77 01</td>
+          <td>ANALISTA DE INVENTARIOS</td>
+          <td>inventariotiendas@bikehouse.com.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>TRASLADOS ENTRE TIENDAS</td>
+          <td>300 6175369 - 321 8363169</td>
+          <td></td>
+          <td>inventariotiendas@bikehouse.com.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<section class="container aym">
+  <h1>LOGÍSTICA Y FACTURACIÓN</h1>
+  <div class="tbl-content">
+    <table id="LOGÍSTICA Y FACTURACIÓN" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>CARLOS CARDONA</td>
+          <td>316 411 89 22 Ext. 4160</td>
+          <td>AUXILIAR DESPACHOS</td>
+          <td>auxdespachos@bikehouse.co</td>
+          <td>BODEGA</td>
+        </tr>
+        <tr>
+          <td>ALEXANDER ORREGO</td>
+          <td></td>
+          <td>AUXILIAR DESPACHOS</td>
+          <td>auxdespachos1@bikehouse.co</td>
+          <td>BODEGA</td>
+        </tr>
+        <tr>
+          <td>DIANA GÓMEZ</td>
+          <td>318 428 15 62 Ext. 4161</td>
+          <td>FACTURACIÓN BODEGA</td>
+          <td>facturacionbodega@bikehouse.com.co</td>
+          <td>BODEGA</td>
+        </tr>
+        <tr>
+          <td>YISELA URIBE</td>
+          <td>322 836 19 72 Ext. 4153</td>
+          <td>ANALISTA ESTADÍSTICAS Y FACTURACIÓN</td>
+          <td>auxventas@bikehouse.co</td>
+          <td>BODEGA</td>
+        </tr>
+        <tr>
+          <td>VERÓNICA CRISTANCHO</td>
+          <td>316 502 32 00 Ext. 4160</td>
+          <td>FACTURACIÓN</td>
+          <td>facturacion@bikehouse.com.co</td>
+          <td>BODEGA</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>CONTABILIDAD</h1>
+  <div class="tbl-content">
+    <table id="CONTABILIDAD" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>MARLYN QUICENO</td>
+          <td>315 787 17 22 Ext. 4110</td>
+          <td>DIRECTORA CONTABILIDAD</td>
+          <td>contabilidad@bikehouse.com.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>SANDRA ECHAVARRÍA</td>
+          <td>315 787 17 22 Ext. 4116</td>
+          <td>ASISTENTE CONTABLE</td>
+          <td>auxcontable2@bikehouse.com.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>EUGENIA TORRES</td>
+          <td>315 787 17 22 Ext. 4113</td>
+          <td>AUXILIAR CONTABLE</td>
+          <td>auxcontable7@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>SANDRA PÉREZ</td>
+          <td>315 787 17 22 Ext. 4115</td>
+          <td>AUXILIAR CONTABLE</td>
+          <td>auxcontable5@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>JULIANA RUIZ</td>
+          <td>315 787 17 22 Ext. 4260</td>
+          <td>AUXILIAR CONTABLE</td>
+          <td>auxcontable8@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>SEBASTIÁN MARTÍNEZ HERRERA</td>
+          <td>315 787 17 22</td>
+          <td>AUXILIAR CONTABLE</td>
+          <td>auxcontable4@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>NATALY CARO</td>
+          <td>315 787 17 22</td>
+          <td>AUXILIAR CONTABLE</td>
+          <td>auxfacturacion@bikehouse.co - auxcontable3@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>MAGDALENA ARBOLEDA</td>
+          <td>315 787 17 22 Ext. 4117</td>
+          <td>TESORERÍA</td>
+          <td>tesoreria@bikehouse.com.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>CARTERA</h1>
+  <div class="tbl-content">
+    <table id="CARTERA" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>DANIEL CARMONA</td>
+          <td>316 411 89 19 Ext. 4140</td>
+          <td>LÍDER DE CARTERA</td>
+          <td>cartera@bikehouse.com.co</td>
+          <td>BODEGA</td>
+        </tr>
+        <tr>
+          <td>LUZ NEDY VALLE</td>
+          <td>311 367 07 43 Ext. 4143</td>
+          <td>AUXILIAR DE CARTERA</td>
+          <td>auxcartera2@bikehouse.co</td>
+          <td>BODEGA</td>
+        </tr>
+        <tr>
+          <td>CÉSAR ANDRÉS ARANGO</td>
+          <td>317 436 50 40 Ext. 4142</td>
+          <td>AUXILIAR DE CARTERA</td>
+          <td>auxcartera@bikehouse.co</td>
+          <td>BODEGA</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>MANTENIMIENTO LOCATIVO</h1>
+  <div class="tbl-content">
+    <table id="MANTENIMIENTO LOCATIVO" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>ALEJANDRO ORREGO</td>
+          <td>321 481 82 34</td>
+          <td>LÍDER DE COMPRAS Y MANTENIMIENTO</td>
+          <td>jefedecompras@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>SUJEIDY MANBUSCAY</td>
+          <td>317 438 85 01</td>
+          <td>AUXILIAR MANTENIMIENTO LOCATIVO</td>
+          <td>mantenimientolocativo@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+        <tr>
+          <td>ADRIANA GÓMEZ</td>
+          <td>317 438 85 01</td>
+          <td>DIRECCIÓN DE MANTENIMIENTO LOCATIVO</td>
+          <td>direccionmantenimiento@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>DIRECCIÓN COMERCIAL</h1>
+  <div class="tbl-content">
+    <table id="DIRECCIÓN COMERCIAL" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>JOSE VICENTE PINO</td>
+          <td></td>
+          <td>DIRECTOR COMERCIAL</td>
+          <td>gerenciacomercial@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>TALLERES</h1>
+  <div class="tbl-content">
+    <table id="TALLERES" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>IVAN GUILLERMO MEJIA PELAES</td>
+          <td>321 330 9101</td>
+          <td>LÍDER DE TALLER</td>
+          <td>jefedetaller@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>ANALISTA</h1>
+  <div class="tbl-content">
+    <table id="ANALISTA" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td></td>
+          <td>313 469 07 87</td>
+          <td>ANALISTA FINANCIERA</td>
+          <td>analistafinanciera@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>FACTURACIÓN ELECTRÓNICA</h1>
+  <div class="tbl-content">
+    <table id="FACTURACIÓN ELECTRÓNICA" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>Yisela Uribe Cano</td>
+          <td>Auxiliar de facturación</td>
+          <td>321 836 1972</td>
+          <td>auxfacturacion@bikehouse.co</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container aym">
+  <h1>ANALISTA</h1>
+  <div class="tbl-content">
+    <table id="ANALISTA" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td></td>
+          <td>ANALISTA FINANCIERA</td>
+          <td>313 469 07 87</td>
+          <td>analistafinanciera@bikehouse.co</td>
+          <td>DREAM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<script>
+function exportarExcel() {
+    // Crear un libro de trabajo vacío
+    var wb = XLSX.utils.book_new();
+
+    // Crear una matriz para almacenar todos los datos de todas las tablas
+    var allTableData = [];
+
+    // Obtener todas las tablas con la clase tbl-content
+    var tablas = document.querySelectorAll('.tbl-content table');
+
+    // Recorrer cada tabla
+    tablas.forEach((tabla, index) => {
+        // Crear una matriz para almacenar todos los datos de la tabla actual
+        var tableData = [];
+
+        // Agregar el nombre de la tabla como primera fila
+        tableData.push([tabla.id]);
+
+        // Recorrer cada fila de la tabla
+        Array.from(tabla.rows).forEach(row => {
+            var rowData = [];
+            // Recorrer cada celda de la fila
+            Array.from(row.cells).forEach(cell => {
+                rowData.push(cell.textContent);
+            });
+            tableData.push(rowData);
+        });
+
+        // Agregar una fila en blanco para separar las tablas
+        tableData.push([]);
+
+        // Concatenar los datos de la tabla actual a los datos de todas las tablas
+        allTableData = allTableData.concat(tableData);
+    });
+
+    // Convertir la matriz con todos los datos de las tablas en una hoja de Excel
+    var ws = XLSX.utils.aoa_to_sheet(allTableData);
+
+    // Establecer estilos para la hoja de Excel
+    var range = XLSX.utils.decode_range(ws['!ref']);
+
+    // Establecer estilos para las filas
+    for (var R = range.s.r; R <= range.e.r; ++R) {
+        var row_address = { r: R };
+        var row_ref = XLSX.utils.encode_row(R);
+        ws['!rows'] = ws['!rows'] || [];
+        ws['!rows'][R] = {
+            height: 10, // Altura de la fila en puntos
+            hidden: false, // La fila no está oculta
+            outlineLevel: 0, // Nivel de esquema de la fila
+            collapsed: false // La fila no está colapsada
+        };
+    }
+
+    // Establecer estilos para las columnas
+    for (var C = range.s.c; C <= range.e.c; ++C) {
+        var col_address = { c: C };
+        var col_ref = XLSX.utils.encode_col(C);
+        ws['!cols'] = ws['!cols'] || [];
+        ws['!cols'][C] = {
+            width: 80, // Ancho de la columna en puntos
+            hidden: false, // La columna no está oculta
+            outlineLevel: 0, // Nivel de esquema de la columna
+            collapsed: false // La columna no está colapsada
+        };
+    }
+
+    // Establecer estilos para las celdas
+    for (var R = range.s.r; R <= range.e.r; ++R) {
+        for (var C = range.s.c; C <= range.e.c; ++C) {
+            var cell_address = { c: C, r: R };
+            var cell_ref = XLSX.utils.encode_cell(cell_address);
+            if (!ws[cell_ref]) continue;
+            ws[cell_ref].s = {
+                font: { name: "Arial", bold: true },
+                fill: { patternType: "solid", fgColor: { rgb: "#FFDD99" } },
+                border: { top: { style: "thin", color: { rgb: "#EAECEE" } }, bottom: { style: "thin", color: { rgb: "#797D7F " } }, left: { style: "thin", color: { rgb: "#A04000" } }, right: { style: "thin", color: { rgb: "#F9E79F" } } }
+            };
+        }
+    }
+
+    // Agregar la hoja al libro de trabajo
+    XLSX.utils.book_append_sheet(wb, ws, 'AREA ADMINISTRATIVA');
+
+    // Guardar el libro de trabajo como archivo Excel
+    XLSX.writeFile(wb, 'area_administrativa.xlsx');
+}
+
+function atras() {
+  window.location.href = 'index.html';
+}
+
+            const buscar = () => {
+                const textoBusqueda = document.getElementById("busqueda").value.trim().toLowerCase();
+                const filas = document.querySelectorAll(".tbl-content tbody tr");
+        
+                // Limpiar resultados anteriores
+                filas.forEach((fila) => {
+                    fila.classList.remove("resultado");
+                    const celdas = fila.querySelectorAll("td");
+                    celdas.forEach((celda) => {
+                        celda.style.backgroundColor = "";
+                    });
+                });
+        
+                if (textoBusqueda === "") {
+                    // Ocultar mensaje de no resultados al limpiar
+                    const mensajeNoResultados = document.getElementById("mensajeNoResultados");
+                    mensajeNoResultados.style.display = "none";
+                    return;
+                }
+        
+                const regex = new RegExp(textoBusqueda, "i");
+        
+                const filasEncontradas = Array.from(filas).filter((fila) => {
+                    const celdas = fila.querySelectorAll("td");
+                    return Array.from(celdas).some((celda) => regex.test(celda.textContent.trim()));
+                });
+        
+                if (filasEncontradas.length > 0) {
+                    filasEncontradas.forEach((fila) => {
+                        fila.classList.add("resultado");
+                        fila.scrollIntoView({ behavior: "smooth" });
+        
+                        const celdasEncontradas = fila.querySelectorAll("td");
+                        celdasEncontradas.forEach((celda) => {
+                            celda.style.backgroundColor = "#FF0000"; // Cambia el color a rojo aquí
+                        });
+                    });
+                } else {
+                    // Mostrar mensaje de no resultados
+                    const mensajeNoResultados = document.getElementById("mensajeNoResultados");
+                    mensajeNoResultados.style.display = "block";
+                }
+            };
+        
+            document.getElementById("busqueda").addEventListener("input", buscar);
+        
+            document.querySelector(".icon-right img").addEventListener("click", () => {
+                const finalDeLaPagina = document.querySelector("body");
+                finalDeLaPagina.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+            });
+        </script>        
+    </body>
+    </html>
+
+
